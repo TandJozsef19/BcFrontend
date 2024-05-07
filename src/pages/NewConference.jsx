@@ -160,9 +160,10 @@ const NewConference = () => {
     }
 
     if (conferenceData.hotelForConference === true) {
-      if (!conferenceData.hotelRoomPrice)
+      if (!conferenceData.hotelRoomPrice) {
         errors.hotelRoomPrice = "A szállás árának megadása kötelező.";
-      isValid = false;
+        isValid = false;
+      }
     }
 
     if (!conferenceData.confDescription) {

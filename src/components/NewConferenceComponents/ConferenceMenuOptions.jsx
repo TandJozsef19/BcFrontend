@@ -42,7 +42,7 @@ const ConferenceMenuOptions = ({
     }
 
     setMenuOptions(newMenuOptions);
-  }, [startDate, endDate, menuOptions, setMenuOptions]);
+  }, [startDate, endDate, setMenuOptions]);
 
   const handleMenuOptionChange = (index, field, value) => {
     const updatedMenuOptions = [...menuOptions];
