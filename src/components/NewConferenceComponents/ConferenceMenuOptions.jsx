@@ -12,31 +12,37 @@ const ConferenceMenuOptions = ({
 
     const start = new Date(startDate);
     const end = new Date(endDate);
-    const daysDifference =
-      Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1;
+    const endDateChecker = new Date(endDate);
+    end.setHours(23, 59, 59, 999);
+    const daysDifference = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
 
-    const newMenuOptions = Array.from({ length: daysDifference }).map(
-      (_, index) => {
-        const date = new Date(start);
-        date.setDate(start.getDate() + index);
+    const newMenuOptions = [];
 
-        const existingOption = menuOptions.find(
-          (option) =>
-            new Date(option.date).toDateString() === date.toDateString()
-        );
-        return (
-          existingOption || {
-            date: date.toISOString().split("T")[0],
-            vegan: "",
-            vegetarian: "",
-            traditional: "",
-          }
-        );
+    for (let i = 0; i < daysDifference; i++) {
+      const date = new Date(start);
+      date.setDate(start.getDate() + i);
+      const dateString = date.toISOString().split("T")[0];
+
+      if (i === daysDifference - 1 && endDateChecker.getHours() < 10) {
+        continue;
       }
-    );
+
+      const existingOption = menuOptions.find(
+        (option) => option.date === dateString
+      );
+
+      newMenuOptions.push(
+        existingOption || {
+          date: dateString,
+          vegan: "",
+          vegetarian: "",
+          traditional: "",
+        }
+      );
+    }
 
     setMenuOptions(newMenuOptions);
-  }, [startDate, endDate, setMenuOptions]);
+  }, [startDate, endDate, menuOptions, setMenuOptions]);
 
   const handleMenuOptionChange = (index, field, value) => {
     const updatedMenuOptions = [...menuOptions];
