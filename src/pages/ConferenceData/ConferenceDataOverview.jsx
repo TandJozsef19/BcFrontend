@@ -127,7 +127,7 @@ const ConferenceDataOverview = () => {
 
     totalDailyIncome = totalParticipants * parseInt(conference?.price);
     totalAccommodationIncome =
-      totalRoomBookings * parseInt(conference?.hotelRoomPrice);
+      totalRoomBookings * parseInt(conference?.hotelRoomPrice || 0);
 
     // Fakultatív programok bevételeinek számolása
     conference?.facultativePrograms.forEach((program) => {
