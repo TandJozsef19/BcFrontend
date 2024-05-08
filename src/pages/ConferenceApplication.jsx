@@ -55,6 +55,7 @@ const ConferenceApplication = () => {
     useState([]);
   const [formErrors, setFormErrors] = useState({});
   const isDeadlinePassed = new Date() > new Date(conferenceDetails?.deadline);
+  const [isCreating, setIsCreating] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -217,6 +218,7 @@ const ConferenceApplication = () => {
   };
 
   const confirmSubmission = async () => {
+    setIsCreating(true);
     const submitData = new FormData();
 
     submitData.append("userId", user.id);
@@ -285,6 +287,7 @@ const ConferenceApplication = () => {
         error.response?.data?.message || "Hiba történt a jelentkezés során."
       );
     } finally {
+      setIsCreating(false);
       setIsModalOpen(false);
     }
   };
@@ -465,6 +468,7 @@ const ConferenceApplication = () => {
         onConfirm={confirmSubmission}
         title="Jelentkezés megerősítése"
         confirmable={true}
+        isCreating={isCreating}
       >
         <p>Biztosan jelentkezni szeretnél a konferenciára?</p>
       </Modal>

@@ -56,11 +56,9 @@ const ConferenceDataOverview = () => {
           `${API_URL}/applications/conference/${conferenceId}`
         );
         console.log(response.data.data.applications);
-        // Az összes jelentkezés kinyerése
         const applicationSpeakers = response.data.data.applications;
         setApplications(response.data.data.applications);
 
-        // Az előadók számának meghatározása
         const speakerCount = applicationSpeakers.filter(
           (app) => app.role === "speaker"
         ).length;
@@ -140,8 +138,6 @@ const ConferenceDataOverview = () => {
       totalFacultativeIncome +
       totalRegistrationCostIncome +
       totalAccommodationIncome;
-
-    console.log(dayCounts);
 
     // Állapot frissítése (példaként)
     setRegistrationCostIncome(totalRegistrationCostIncome);

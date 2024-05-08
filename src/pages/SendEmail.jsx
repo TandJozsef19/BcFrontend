@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Modal from "../components/Modal";
 
 const BASE_URL = "https://bcbackend-pn9e.onrender.com";
 
@@ -15,6 +16,9 @@ const SendEmail = () => {
     isSuccess: true,
   });
   const [emailType, setEmailType] = useState("personal");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [isCreating, setIsCreating] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -42,8 +46,51 @@ const SendEmail = () => {
   const handleChange = (e) => {
     setEmailData({ ...emailData, [e.target.name]: e.target.value });
   };
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
 
-  const handleSubmit = async (e) => {
+    if (!emailData.content) {
+      errors.content = "Üres üzenetet nem lehet elküldeni.";
+      isValid = false;
+    }
+
+    if (!emailData.subject) {
+      errors.subject = "Tárgy megadása kötelező.";
+      isValid = false;
+    }
+
+    if (emailType === "personal") {
+      if (!emailData.recipient) {
+        errors.recipient = "Címzett megadása kötelező.";
+        isValid = false;
+      }
+    }
+    if (emailType === "group") {
+      if (!selectedConference) {
+        errors.recipient = "Címzettek megadása kötelező.";
+        isValid = false;
+      }
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setIsModalOpen(true);
+    }
+    console.log(formErrors);
+  };
+
+  const confirmSubmission = async (e) => {
+    setIsCreating(true);
     e.preventDefault();
 
     const endpoint =
@@ -80,7 +127,13 @@ const SendEmail = () => {
         isSuccess: response.ok,
       });
       if (response.ok) {
-        setEmailData({ recipient: "", subject: "", content: "" });
+        setEmailData({
+          recipient: "",
+          recipients: "",
+          subject: "",
+          content: "",
+        });
+        setEmailType("personal");
         setSelectedConference("");
       }
     } catch (error) {
@@ -88,6 +141,9 @@ const SendEmail = () => {
         message: "Hiba az e-mail küldése közben.",
         isSuccess: false,
       });
+    } finally {
+      setIsCreating(false);
+      setIsModalOpen(false);
     }
   };
 
@@ -97,6 +153,9 @@ const SendEmail = () => {
       setEmailData({ ...emailData, content: emailData.content + "\n" });
     }
   };
+
+  const hasErrors =
+    formErrors.content || formErrors.subject || formErrors.recipient;
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-3 col-span-4 gap-4">
@@ -137,10 +196,18 @@ const SendEmail = () => {
                   >
                     Címzett:
                   </label>
+                  {hasErrors && (
+                    <p
+                      className={`text-red-500 text-xs mt-1 ${
+                        formErrors.recipient ? "h-5" : "opacity-0"
+                      }`}
+                    >
+                      {formErrors.recipient || "⠀"}
+                    </p>
+                  )}
                   <input
                     type="text"
                     name="recipient"
-                    required
                     value={emailData.recipient}
                     onChange={handleChange}
                     placeholder="Írja be a címzettet"
@@ -158,10 +225,18 @@ const SendEmail = () => {
                   >
                     Csoport:
                   </label>
+                  {hasErrors && (
+                    <p
+                      className={`text-red-500 text-xs mt-1 ${
+                        formErrors.recipient ? "h-5" : "opacity-0"
+                      }`}
+                    >
+                      {formErrors.recipient || "⠀"}
+                    </p>
+                  )}
                   <input
                     type="text"
                     name="recipient"
-                    required
                     value={selectedConference}
                     onChange={handleChange}
                     placeholder="Válassza ki a konferenciák közül"
@@ -176,6 +251,15 @@ const SendEmail = () => {
             <label htmlFor="subject" className="text-md font-medium block mb-2">
               Tárgy:
             </label>
+            {hasErrors && (
+              <p
+                className={`text-red-500 text-xs mt-1 ${
+                  formErrors.subject ? "h-5" : "opacity-0"
+                }`}
+              >
+                {formErrors.subject || "⠀"}
+              </p>
+            )}
             <input
               name="subject"
               value={emailData.subject}
@@ -190,9 +274,17 @@ const SendEmail = () => {
             <label htmlFor="content" className="text-md font-medium block mb-2">
               Üzenet szövege:
             </label>
+            {hasErrors && (
+              <p
+                className={`text-red-500 text-xs mt-1 ${
+                  formErrors.content ? "h-5" : "opacity-0"
+                }`}
+              >
+                {formErrors.content || "⠀"}
+              </p>
+            )}
             <textarea
               name="content"
-              required
               rows="6"
               value={emailData.content}
               onChange={handleChange}
@@ -240,6 +332,16 @@ const SendEmail = () => {
           </form>
         </div>
       ) : null}
+      <Modal
+        show={isModalOpen}
+        onClose={handleModalClose}
+        onConfirm={confirmSubmission}
+        title="Email küldés"
+        confirmable={true}
+        isCreating={isCreating}
+      >
+        <p>Biztosan elszeretnéd küldeni az üzenetet?</p>
+      </Modal>
     </section>
   );
 };

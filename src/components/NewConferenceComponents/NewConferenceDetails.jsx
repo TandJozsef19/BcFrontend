@@ -381,7 +381,6 @@ const NewConferenceDetails = ({
           </select>
         </div>
 
-        {/* Hotel szoba ára - csak akkor jelenik meg, ha a szállásfoglalás "Igen" */}
         {conferenceData.hotelForConference && (
           <div className="mb-4">
             <label

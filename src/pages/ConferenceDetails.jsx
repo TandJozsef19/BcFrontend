@@ -47,8 +47,8 @@ const ConferenceDetails = () => {
           .map((speaker) => ({
             name: speaker.name,
             profileImage: speaker.profileImage,
-            workplace: speaker.workplace,
-            workplacePosition: speaker.workplacePosition,
+            workplace: speaker.workplace || "",
+            workplacePosition: speaker.workplacePosition || "",
             speakerSubject: speaker.speakerSubject,
           }));
         console.log(speakers);

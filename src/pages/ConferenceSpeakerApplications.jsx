@@ -59,7 +59,13 @@ const ConferenceSpeakerApplications = () => {
     (application) => application.approvalStatus === "pending"
   );
 
-  if (isLoading) return <Loading />;
+  if (isLoading) {
+    return (
+      <section className="lg:col-span-4 md:col-span-2 col-span-1">
+        <Loading />
+      </section>
+    );
+  }
   if (fetchError) return <ErrorElement message={fetchError} />;
 
   const formatDate = (dateStr) => {

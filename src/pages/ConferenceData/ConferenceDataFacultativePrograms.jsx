@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { FaCalendarAlt, FaUsers, FaTimes } from "react-icons/fa";
-import { Pagination } from "../../components";
+import { Loading, Pagination } from "../../components";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "../vfs_fonts";
 
@@ -163,8 +163,6 @@ const ConferenceDataFacultativePrograms = () => {
 
   useEffect(() => {
     const newFacultativeProgramParticipants = {};
-    // Fakultativ Programok megszámolása
-    // Iterálás minden jelentkezésen
     applications.forEach((app) => {
       // Fakultativ Programok megszámolása
       app.selectedFacultativePrograms.forEach((selectedFacultative) => {
@@ -174,11 +172,16 @@ const ConferenceDataFacultativePrograms = () => {
       });
     });
 
-    // Frissítsük az állapotokat az új értékekkel
     setFacultativeProgramParticipants(newFacultativeProgramParticipants);
   }, [applications]);
 
-  if (!conference) return <div>Loading...</div>;
+  if (!conference) {
+    return (
+      <div className="bg-base-100 w-full shadow overflow-hidden rounded-lg p-5">
+        <Loading />;
+      </div>
+    );
+  }
 
   const handleGeneratePdf = (facultativeProgramTitle) => {
     const facultativeProgramParticipants = applications
@@ -215,8 +218,8 @@ const ConferenceDataFacultativePrograms = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6 text-primary">
+    <div className="bg-base-100 w-full shadow overflow-hidden rounded-lg p-5">
+      <h2 className="text-2xl font-bold text-primary mb-6">
         Fakultatív Programok
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

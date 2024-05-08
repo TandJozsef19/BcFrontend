@@ -72,7 +72,6 @@ export const fetchConference = createAsyncThunk(
   }
 );
 
-// deleteConf thunk definiálása
 export const deleteConf = createAsyncThunk(
   "admin/deleteConf",
   async (conferenceId, { dispatch, rejectWithValue }) => {

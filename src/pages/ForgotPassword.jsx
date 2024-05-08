@@ -81,7 +81,7 @@ const ForgotPassword = () => {
         setError(data.message);
       } else {
         setMessage(data.message);
-        setStage(3); // Move to success message
+        setStage(3);
       }
     } catch (error) {
       setError("Szerver hiba történt.");

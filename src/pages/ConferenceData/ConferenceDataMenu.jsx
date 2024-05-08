@@ -121,7 +121,7 @@ const ConferenceDataMenu = () => {
           (menu) => menu.date.slice(0, 10) === selectedDay.slice(0, 10)
         )?.selection || "-";
 
-      const menuLabel = menuTypeMap[menuSelection] || menuSelection; // Ha nincs a map-ben, akkor az eredeti értéket használjuk
+      const menuLabel = menuTypeMap[menuSelection] || menuSelection;
       const glutenSensitiveText = app.glutenSensitive ? "Igen" : "Nem";
       const flourSensitiveText = app.flourSensitive ? "Igen" : "Nem";
 
@@ -203,7 +203,7 @@ const ConferenceDataMenu = () => {
   const renderSummaryCards = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {Object.entries(summary)
-        .sort(sortByMenuOrder) // Az Object.entries(summary) eredményének rendezése
+        .sort(sortByMenuOrder)
         .map(([menuType, data]) => {
           const menuTypeLabel =
             menuType === "traditional"

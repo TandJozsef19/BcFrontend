@@ -234,7 +234,6 @@ const ConferenceDataSpeakers = () => {
           `${API_URL}/applications/deleteapplication/${selectedApplicationId}`
         );
 
-        // Frissíti a jelentkezések listáját, eltávolítva a törölt jelentkezést
         setApplications(
           applications.filter(
             (application) => application._id !== selectedApplicationId
