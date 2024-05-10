@@ -49,14 +49,14 @@ const ArticleDetails = () => {
       <LeftSideNav />
       {/* <!-- Fő tartalom --> */}
       <div className="bg-base-100 shadow-lg rounded-xl p-8 col-span-3 space-y-6">
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto">
           {/* <!-- Hír részletek --> */}
           <div className="space-y-6">
             <h2 className="lg:text-5xl md:text-2xl sm:text-3xl font-bold text-primary pb-4 border-b">
               {article.title}
             </h2>
-            <div className="bg-base-200 p-6 rounded-xl shadow-md">
-              <p className="lg:text-xl md:text-lg sm:text-md leading-relaxed mb-4">
+            <div className="bg-base-200 p-4 rounded-xl shadow-md">
+              <p className="lg:text-lg md:text-md text-sm leading-relaxed mb-4">
                 {article.content}
               </p>
             </div>
