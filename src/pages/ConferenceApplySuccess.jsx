@@ -14,26 +14,26 @@ const ConferenceApplySuccess = () => {
             Sikeres Jelentkezés
           </h2>
           <p className="text-md text-center">
-            Köszönjük, hogy sikeresen jelentkeztél a konferenciára! Nagyon
-            örülünk, hogy csatlakozni fogsz hozzánk.
+            Köszönjük, hogy sikeresen jelentkezett a konferenciára! Nagyon
+            örülünk, hogy csatlakozni fog hozzánk.
           </p>
           <p className="text-md text-center mt-4">
-            Mostantól részese lehetsz a konferencia izgalmas eseményeinek,
-            előadásoknak. Lesz lehetőséged új embereket megismerni,
+            Mostantól részese lehet a konferencia izgalmas eseményeinek,
+            előadásoknak. Lesz lehetősége új embereket megismerni,
             tapasztalatokat cserélni és inspirációt meríteni.
           </p>
           <p className="text-md text-center mt-4">
-            A részletekkel kapcsolatban hamarosan értesítéseket küldünk neked az
-            e-mail címedre. Addig is, kérjük, látogasd meg a honlapunkat és
-            kísérj minket, hogy ne maradj le semmiről!
+            A részletekkel kapcsolatban hamarosan értesítéseket küldünk Önnek az
+            e-mail címére. Addig is, kérjük, látogassa meg a honlapunkat és
+            kísérjen minket, hogy ne maradjon le semmiről!
           </p>
           <p className="text-md text-center mt-4">
-            Ha bármilyen kérdésed vagy észrevételed van, ne habozz kapcsolatba
-            lépni velünk az alábbi e-mail címen: info@konferencia.hu
+            Ha bármilyen kérdése vagy észrevétele van, ne habozzon kapcsolatba
+            lépni velünk az alábbi e-mail címen: konferenciabc@gmail.com
           </p>
           <p className="text-md text-center mt-4">
-            Várunk szeretettel a konferencián, és reméljük, hogy hasznos és
-            inspiráló élményekkel gazdagodsz majd!
+            Várjuk szeretettel a konferencián, és reméljük, hogy hasznos és
+            inspiráló élményekkel gazdagodik majd!
           </p>
           <div className="text-center max-w-xl mt-5">
             <Link to="/" className="btn btn-primary uppercase py-2">

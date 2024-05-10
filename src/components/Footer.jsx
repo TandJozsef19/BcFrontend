@@ -33,7 +33,7 @@ const Footer = () => {
   Üdvözöljük a Konferencia Szervező Oldalán! Kérjük, olvassa el a következő felhasználási feltételeket és feltételekkel kapcsolatos információkat.
   
   1. Regisztráció és Fiók
-  A konferencia részvételhez regisztrálnod kell egy fiókot. A fiók létrehozásakor a megadott adatoknak pontosnak és naprakésznek kell lenniük. A fiók adatait biztonságban kell tartani.
+  A konferencia részvételhez regisztrálnia kell egy fiókot. A fiók létrehozásakor a megadott adatoknak pontosnak és naprakésznek kell lenniük. A fiók adatait biztonságban kell tartani.
   
   2. Konferencia Regisztráció
   A konferenciára történő regisztráció során az általunk gyűjtött információkat kizárólag a konferencia szervezéséhez és kommunikációhoz használjuk fel. Az adatvédelem fontos számunkra, és soha nem adjuk ki azokat harmadik feleknek.
@@ -45,7 +45,7 @@ const Footer = () => {
   A konferencia szervezői nem vállalnak felelősséget a résztvevők vagy harmadik felek által okozott károkért.
   
   5. Kapcsolat
-  Ha kérdése vagy észrevétele van a felhasználási feltételekkel vagy a konferenciával kapcsolatban, lépjen velünk kapcsolatba az alábbi címen: info@konferenciaszervezo.hu.
+  Ha kérdése vagy észrevétele van a felhasználási feltételekkel vagy a konferenciával kapcsolatban, lépjen velünk kapcsolatba az alábbi címen: konferenciabc@gmail.com.
   
   Köszönjük, hogy a Konferencia Szervező Oldalát választotta!`;
   const contactText = `Kapcsolatfelvételi információ:\n\nCím: 1234 Komárom, Példa utca 1.\nTelefon: +36 1 234 5678\nE-mail: konferenciabc@gmail.com`;
@@ -91,8 +91,7 @@ const Footer = () => {
 
         {/* <!-- Copyright szöveg --> */}
         <div className="text-center">
-          <span className="text-primary">©</span> 2023 Konferencia. Minden jog
-          fenntartva.
+          <span className="text-primary">©</span> 2023 Konferencia.
         </div>
       </div>
 

@@ -186,7 +186,7 @@ const Header = () => {
         title="Kijelentkezés megerősítése"
         confirmable={true}
       >
-        <p>Biztosan ki szeretnél jelentkezni?</p>
+        <p>Biztosan ki szeretne jelentkezni?</p>
       </Modal>
     </>
   );

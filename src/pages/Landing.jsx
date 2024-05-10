@@ -14,11 +14,11 @@ const Landing = () => {
       {/* Oldal közepe */}
       <div className="bg-base-100 shadow-md rounded-lg p-6 col-span-3">
         <h1 className="text-4xl font-bold text-primary border-b pb-2 mb-4">
-          Csatlakozz hozzánk!
+          Csatlakozzon hozzánk!
         </h1>
         <p className="mb-6">
-          Kapcsolódj be és ismerkedj meg az iparág kiemelkedő szakértőivel, akik
-          megosztják tapasztalataikat és tudásukat veled!
+          Kapcsolódjon be és ismerkedjen meg az iparág kiemelkedő szakértőivel,
+          akik megosztják tapasztalataikat és tudásukat Önnel!
         </p>
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
           {landingPanels.map((panel) => {

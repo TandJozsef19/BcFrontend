@@ -29,7 +29,6 @@ export const login = createAsyncThunk(
         email,
         password,
       });
-      // Tárolja a felhasználói adatokat
       return {
         user: response.data.user,
         role: response.data.user.role,

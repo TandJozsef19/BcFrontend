@@ -47,7 +47,7 @@ const LeftSideNav = () => {
                       formatDate(conference.endDate)
                         ? formatDate(conference.startDate)
                         : `${formatDate(conference.startDate)} - ${formatDate(
-                            conference.endDate,
+                            conference.endDate
                           )}`}
                     </p>
                   </div>
@@ -59,7 +59,7 @@ const LeftSideNav = () => {
         {/* <!-- További események --> */}
       </ul>
       <Link to="/konferenciak" className="text-primary hover:underline block">
-        {confItems && confItems.length > 0 ? "Nézd meg a többi eseményt" : ""}
+        {confItems && confItems.length > 0 ? "Nézze meg a többi eseményt" : ""}
       </Link>
 
       {/* <!-- Hírek szekció --> */}
@@ -100,7 +100,7 @@ const LeftSideNav = () => {
         className="text-primary hover:underline block"
       >
         {articleItems && articleItems.length > 0
-          ? "Nézd meg a további cikkeket"
+          ? "Nézze meg a további cikkeket"
           : ""}
       </Link>
     </div>

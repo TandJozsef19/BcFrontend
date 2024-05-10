@@ -48,7 +48,7 @@ const Login = () => {
           Bejelentkezés
         </h1>
         <p className="mb-8 text-center primary-content">
-          Üdvözöljük újra! Jelentkezz be és folytasd a böngészést.
+          Üdvözöljük újra! Jelentkezzen be és folytassa a böngészést.
         </p>
 
         <form onSubmit={handleLogin}>
@@ -127,12 +127,12 @@ const Login = () => {
         </form>
 
         <p className="text-center text-sm">
-          Nincs fiókod?
+          Nincs fiókja?
           <a
             href="/regisztracio"
             className="text-blue-500 underline ml-1 hover:text-blue-700"
           >
-            Regisztrálj most!
+            Regisztráljon most!
           </a>
         </p>
         <div className="divider uppercase">vagy</div>

@@ -74,7 +74,7 @@ const Register = () => {
 
       if (register.fulfilled.match(actionResult)) {
         setModalMessage(
-          "Aktiváld fiókdat! Mielőtt bejelentkeznél email-ben elküldtünk egy PIN kódot a megerősitéshez. Ha nem találod a leveleid között nézd meg a spam mappádat!"
+          "Aktiválja fiókját! Mielőtt bejelentkezne email-ben elküldtünk egy PIN kódot a megerősitéshez. Ha nem találja a levelei között nézze meg a spam mappáját!"
         );
         setIsModalOpen(true);
         setTimeout(

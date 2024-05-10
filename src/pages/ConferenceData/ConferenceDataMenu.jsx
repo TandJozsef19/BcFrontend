@@ -195,7 +195,6 @@ const ConferenceDataMenu = () => {
   // Menü típusok előre meghatározott sorrendje
   const menuOrder = ["traditional", "vegetarian", "vegan"];
 
-  // Rendezési függvény a menü típusok előre meghatározott sorrendje alapján
   const sortByMenuOrder = ([a], [b]) => {
     return menuOrder.indexOf(a) - menuOrder.indexOf(b);
   };

@@ -25,7 +25,7 @@ const RegistrationConfirm = () => {
     } catch (error) {
       if (error.status === 429) {
         setStatusMessage(
-          `Nem rég kértél PIN kódot. Várj még ${error.data.waitTime} percet, mielőtt újra próbálkozol.`
+          `Nem rég kért PIN kódot. Várjon még ${error.data.waitTime} percet, mielőtt újra próbálkozna.`
         );
       } else {
         setStatusMessage(
@@ -53,7 +53,7 @@ const RegistrationConfirm = () => {
     try {
       await dispatch(confirmRegistration({ email, pinCode })).unwrap();
       setModalMessage(
-        "Sikeresen megerősítetted a regisztrációdat. Most már bejelentkezhetsz."
+        "Sikeresen megerősítette a regisztrációdat. Most már bejelentkezhet."
       );
       setIsModalOpen(true);
       console.log("megerositve");
@@ -69,7 +69,7 @@ const RegistrationConfirm = () => {
           Aktiváld fiókodat!
         </h1>
         <p className="text-sm text-center mb-6">
-          Elküldtünk egy PIN kódot az általad megadott email címre. Kérjük, add
+          Elküldtünk egy PIN kódot az általa megadott email címre. Kérjük, adja
           meg az ebben az üzenetben található kódot az alábbi mezőbe a
           folytatáshoz.
         </p>
@@ -95,12 +95,12 @@ const RegistrationConfirm = () => {
             </button>
           </div>
           <p className="mt-6 text-sm text-center">
-            Nem kaptad meg az emailt? Ellenőrizd a spam mappádat vagy
+            Nem kapta meg az emailt? Ellenőrizze a spam mappáját vagy
             <span
               className="text-primary font-medium cursor-pointer"
               onClick={() => handleRequestNewPin()}
             >
-              {" kérj egy új kódot"}
+              {" kérjen egy új kódot"}
             </span>
             .
           </p>

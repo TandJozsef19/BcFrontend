@@ -76,7 +76,6 @@ const ConferenceDataOverview = () => {
   useEffect(() => {
     const newFacultativeParticipants = {};
 
-    // Iterálás minden jelentkezésen
     applications.forEach((app) => {
       // Fakultatív programok megszámolása
       app.selectedFacultativePrograms.forEach((selectedProgram) => {
@@ -86,7 +85,6 @@ const ConferenceDataOverview = () => {
       });
     });
 
-    // Frissítsük az állapotokat az új értékekkel
     setFacultativeParticipants(newFacultativeParticipants);
   }, [applications]);
 

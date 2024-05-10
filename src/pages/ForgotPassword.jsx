@@ -48,7 +48,7 @@ const ForgotPassword = () => {
     } catch (error) {
       if (error.status === 429) {
         setStatusMessage(
-          `Nem rég kértél PIN kódot. Várj még ${error.data.waitTime} percet, mielőtt újra próbálkozol.`
+          `Nem rég kért PIN kódot. Várjon még ${error.data.waitTime} percet, mielőtt újra próbálkozik.`
         );
       } else {
         setStatusMessage(
@@ -191,12 +191,12 @@ const ForgotPassword = () => {
               />
             </div>
             <p className="mt-6 text-sm text-center my-2">
-              Nem kaptad meg az emailt? Ellenőrizd a spam mappádat vagy
+              Nem kapta meg az emailt? Ellenőrizze a spam mappáját vagy
               <span
                 className="text-primary font-medium cursor-pointer"
                 onClick={() => handleRequestNewPin()}
               >
-                {" kérj egy új kódot"}
+                {" kérjen egy új kódot"}
               </span>
               .
             </p>
