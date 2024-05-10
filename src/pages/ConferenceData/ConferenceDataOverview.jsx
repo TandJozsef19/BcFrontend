@@ -229,7 +229,7 @@ const ConferenceDataOverview = () => {
             borderColor="border-primary"
           />
           <InfoCard
-            icon={FaLightbulb}
+            icon={FaTag}
             title="Al-Téma"
             content={conference?.subTopic}
             borderColor="border-primary"
@@ -369,15 +369,15 @@ const ConferenceDataOverview = () => {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <FaBrain className="inline mr-2 text-primary text-2xl" />
+                  <FaLightbulb className="inline mr-2 text-primary text-2xl" />
                   <span className="text-xl font-semibold">{program.title}</span>
+                  <p className="text-primary font-bold">
+                    {facultativeParticipants[program.title] || 0} résztvevő
+                  </p>
                   <div className="text-md italic">
                     Dátum: {formatDate(program.date)}
                   </div>
                 </div>
-                <span className="text-primary font-bold">
-                  {facultativeParticipants[program.title] || 0} résztvevő
-                </span>
               </div>
             </div>
           ))}
