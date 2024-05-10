@@ -151,7 +151,7 @@ const NewArticle = () => {
   };
 
   return (
-    <section className="col-span-4 shadow-md p-5 bg-base-100 rounded-lg">
+    <section className="lg:col-span-4 md:col-span-2 col-span-1 shadow-md p-5 bg-base-100 rounded-lg">
       <h1 className="text-3xl font-bold text-primary mb-6">
         Új Cikk létrehozása
       </h1>

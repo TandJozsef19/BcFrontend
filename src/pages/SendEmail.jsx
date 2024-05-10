@@ -158,190 +158,202 @@ const SendEmail = () => {
     formErrors.content || formErrors.subject || formErrors.recipient;
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-3 col-span-4 gap-4">
-      <div className="col-span-2 shadow-md p-5 bg-base-100 rounded-lg">
-        <h1 className="text-3xl font-bold text-primary mb-6">Email küldés</h1>
-        <div className="mb-4">
-          <button
-            type="button"
-            className={`btn uppercase ${
-              emailType === "personal"
-                ? "btn-primary shadow-md"
-                : "btn-base-200 shadow-md"
-            } mr-2`}
-            onClick={() => handleEmailTypeChange("personal")}
-          >
-            Személyes
-          </button>
-          <button
-            type="button"
-            className={`btn uppercase ${
-              emailType === "group"
-                ? "btn-primary shadow-md"
-                : "btn-base-200 shadow-md"
-            }`}
-            onClick={() => handleEmailTypeChange("group")}
-          >
-            Csoportos
-          </button>
-        </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="form-group">
-            {emailType === "personal" && (
-              <>
-                <div className="form-group">
-                  <label
-                    htmlFor="recipient"
-                    className="text-md font-medium block mb-2"
-                  >
-                    Címzett:
-                  </label>
-                  {hasErrors && (
-                    <p
-                      className={`text-red-500 text-xs mt-1 ${
-                        formErrors.recipient ? "h-5" : "opacity-0"
-                      }`}
-                    >
-                      {formErrors.recipient || "⠀"}
-                    </p>
-                  )}
-                  <input
-                    type="text"
-                    name="recipient"
-                    value={emailData.recipient}
-                    onChange={handleChange}
-                    placeholder="Írja be a címzettet"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-              </>
-            )}
-            {emailType === "group" && (
-              <>
-                <div className="form-group">
-                  <label
-                    htmlFor="recipient"
-                    className="text-md font-medium block mb-2"
-                  >
-                    Csoport:
-                  </label>
-                  {hasErrors && (
-                    <p
-                      className={`text-red-500 text-xs mt-1 ${
-                        formErrors.recipient ? "h-5" : "opacity-0"
-                      }`}
-                    >
-                      {formErrors.recipient || "⠀"}
-                    </p>
-                  )}
-                  <input
-                    type="text"
-                    name="recipient"
-                    value={selectedConference}
-                    onChange={handleChange}
-                    placeholder="Válassza ki a konferenciák közül"
-                    className="input input-bordered w-full"
-                    readOnly
-                  />
-                </div>
-              </>
-            )}
-          </div>
-          <div className="form-group">
-            <label htmlFor="subject" className="text-md font-medium block mb-2">
-              Tárgy:
-            </label>
-            {hasErrors && (
-              <p
-                className={`text-red-500 text-xs mt-1 ${
-                  formErrors.subject ? "h-5" : "opacity-0"
-                }`}
-              >
-                {formErrors.subject || "⠀"}
-              </p>
-            )}
-            <input
-              name="subject"
-              value={emailData.subject}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              type="text"
-              placeholder="Írja be a tárgyat"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="content" className="text-md font-medium block mb-2">
-              Üzenet szövege:
-            </label>
-            {hasErrors && (
-              <p
-                className={`text-red-500 text-xs mt-1 ${
-                  formErrors.content ? "h-5" : "opacity-0"
-                }`}
-              >
-                {formErrors.content || "⠀"}
-              </p>
-            )}
-            <textarea
-              name="content"
-              rows="6"
-              value={emailData.content}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-              placeholder="Írja be az e-mail szövegét"
-              className="textarea textarea-bordered w-full"
-            ></textarea>
-          </div>
-
-          <div className="form-group">
-            {responseMessage.message && (
-              <div
-                className={`text-md mb-2 ${
-                  responseMessage.isSuccess ? "text-green-500" : "text-red-500"
-                }`}
-              >
-                {responseMessage.message}
-              </div>
-            )}
-            <button type="submit" className="btn btn-primary uppercase">
-              Küldés
+    <section className="lg:col-span-4 md:col-span-2 col-span-1 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="col-span-2 shadow-md p-5 bg-base-100 rounded-lg">
+          <h1 className="text-3xl font-bold text-primary mb-6">Email küldés</h1>
+          <div className="mb-4">
+            <button
+              type="button"
+              className={`btn uppercase ${
+                emailType === "personal"
+                  ? "btn-primary shadow-md"
+                  : "btn-base-200 shadow-md"
+              } mr-2`}
+              onClick={() => handleEmailTypeChange("personal")}
+            >
+              Személyes
+            </button>
+            <button
+              type="button"
+              className={`btn uppercase ${
+                emailType === "group"
+                  ? "btn-primary shadow-md"
+                  : "btn-base-200 shadow-md"
+              }`}
+              onClick={() => handleEmailTypeChange("group")}
+            >
+              Csoportos
             </button>
           </div>
-        </form>
-      </div>
-      {emailType === "group" ? (
-        <div className="col-span-1 shadow-md p-5 bg-base-100 rounded-lg">
-          <h2 className="text-2xl font-bold text-primary mb-4">Konferenciák</h2>
-          <form>
-            {conferences.map((conference) => (
-              <div key={conference.title} className="mb-2">
-                <input
-                  type="radio"
-                  id={conference.title}
-                  name="conference"
-                  value={conference.title}
-                  checked={selectedConference === conference.title}
-                  onChange={handleConferenceChange}
-                />
-                <label htmlFor={conference.title} className="ml-2">
-                  {conference.title}
-                </label>
-              </div>
-            ))}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="form-group">
+              {emailType === "personal" && (
+                <>
+                  <div className="form-group">
+                    <label
+                      htmlFor="recipient"
+                      className="text-md font-medium block mb-2"
+                    >
+                      Címzett:
+                    </label>
+                    {hasErrors && (
+                      <p
+                        className={`text-red-500 text-xs mt-1 ${
+                          formErrors.recipient ? "h-5" : "opacity-0"
+                        }`}
+                      >
+                        {formErrors.recipient || "⠀"}
+                      </p>
+                    )}
+                    <input
+                      type="text"
+                      name="recipient"
+                      value={emailData.recipient}
+                      onChange={handleChange}
+                      placeholder="Írja be a címzettet"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
+                </>
+              )}
+              {emailType === "group" && (
+                <>
+                  <div className="form-group">
+                    <label
+                      htmlFor="recipient"
+                      className="text-md font-medium block mb-2"
+                    >
+                      Csoport:
+                    </label>
+                    {hasErrors && (
+                      <p
+                        className={`text-red-500 text-xs mt-1 ${
+                          formErrors.recipient ? "h-5" : "opacity-0"
+                        }`}
+                      >
+                        {formErrors.recipient || "⠀"}
+                      </p>
+                    )}
+                    <input
+                      type="text"
+                      name="recipient"
+                      value={selectedConference}
+                      onChange={handleChange}
+                      placeholder="Válassza ki a konferenciák közül"
+                      className="input input-bordered w-full"
+                      readOnly
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="form-group">
+              <label
+                htmlFor="subject"
+                className="text-md font-medium block mb-2"
+              >
+                Tárgy:
+              </label>
+              {hasErrors && (
+                <p
+                  className={`text-red-500 text-xs mt-1 ${
+                    formErrors.subject ? "h-5" : "opacity-0"
+                  }`}
+                >
+                  {formErrors.subject || "⠀"}
+                </p>
+              )}
+              <input
+                name="subject"
+                value={emailData.subject}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+                type="text"
+                placeholder="Írja be a tárgyat"
+              />
+            </div>
+
+            <div className="form-group">
+              <label
+                htmlFor="content"
+                className="text-md font-medium block mb-2"
+              >
+                Üzenet szövege:
+              </label>
+              {hasErrors && (
+                <p
+                  className={`text-red-500 text-xs mt-1 ${
+                    formErrors.content ? "h-5" : "opacity-0"
+                  }`}
+                >
+                  {formErrors.content || "⠀"}
+                </p>
+              )}
+              <textarea
+                name="content"
+                rows="6"
+                value={emailData.content}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+                placeholder="Írja be az e-mail szövegét"
+                className="textarea textarea-bordered w-full"
+              ></textarea>
+            </div>
+
+            <div className="form-group">
+              {responseMessage.message && (
+                <div
+                  className={`text-md mb-2 ${
+                    responseMessage.isSuccess
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
+                  {responseMessage.message}
+                </div>
+              )}
+              <button type="submit" className="btn btn-primary uppercase">
+                Küldés
+              </button>
+            </div>
           </form>
         </div>
-      ) : null}
-      <Modal
-        show={isModalOpen}
-        onClose={handleModalClose}
-        onConfirm={confirmSubmission}
-        title="Email küldés"
-        confirmable={true}
-        isCreating={isCreating}
-      >
-        <p>Biztosan elszeretnéd küldeni az üzenetet?</p>
-      </Modal>
+        {emailType === "group" ? (
+          <div className="col-span-1 shadow-md p-5 bg-base-100 rounded-lg">
+            <h2 className="text-2xl font-bold text-primary mb-4">
+              Konferenciák
+            </h2>
+            <form>
+              {conferences.map((conference) => (
+                <div key={conference.title} className="mb-2">
+                  <input
+                    type="radio"
+                    id={conference.title}
+                    name="conference"
+                    value={conference.title}
+                    checked={selectedConference === conference.title}
+                    onChange={handleConferenceChange}
+                  />
+                  <label htmlFor={conference.title} className="ml-2">
+                    {conference.title}
+                  </label>
+                </div>
+              ))}
+            </form>
+          </div>
+        ) : null}
+        <Modal
+          show={isModalOpen}
+          onClose={handleModalClose}
+          onConfirm={confirmSubmission}
+          title="Email küldés"
+          confirmable={true}
+          isCreating={isCreating}
+        >
+          <p>Biztosan elszeretnéd küldeni az üzenetet?</p>
+        </Modal>
+      </div>
     </section>
   );
 };

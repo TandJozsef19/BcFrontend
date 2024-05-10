@@ -130,7 +130,7 @@ const ConferenceDataAccommodation = () => {
   };
 
   return (
-    <div className="bg-base-100 w-full shadow overflow-hidden rounded-lg p-5">
+    <div className="bg-base-100 w-full shadow overflow-hidden overflow-x-auto rounded-lg p-5">
       <h2 className="text-2xl text-primary font-bold mb-4">
         Hotel Szobák Rezervációja
       </h2>
@@ -163,7 +163,7 @@ const ConferenceDataAccommodation = () => {
       ) : null}
       {selectedDate && (
         <>
-          <table className="table w-full shadow-lg table-zebra text-center">
+          <table className="table min-w-full shadow-lg table-zebra text-center">
             <thead>
               <tr>
                 <th className="p-5 w-1/4 text-lg text-primary">Név</th>

@@ -109,7 +109,7 @@ const AllUsersInAdmin = () => {
   };
 
   return (
-    <section className="lg:col-span-4 md:col-span-2 col-span-1">
+    <section className="lg:col-span-4 md:col-span-2 col-span-1 overflow-x-auto">
       <h1 className="text-3xl font-bold text-primary mb-6">Felhasználók</h1>
       <div className="flex justify-between mb-4 flex-wrap gap-2">
         <div className="flex">
@@ -147,7 +147,7 @@ const AllUsersInAdmin = () => {
         </select>
         <p className="italic p-2">Találat: {totalItems}</p>
       </div>
-      <table className="w-full bg-base-100 rounded-lg overflow-hidden shadow table-zebra">
+      <table className="min-w-full bg-base-100 rounded-lg overflow-hidden shadow table-zebra">
         <thead className="bg-base-200">
           <tr>
             <th className="p-3">Név</th>

@@ -260,7 +260,7 @@ const ConferenceDataApplications = () => {
   };
 
   return (
-    <div className="bg-base-100 w-full shadow overflow-hidden rounded-lg p-5">
+    <div className="bg-base-100 w-full shadow overflow-hidden overflow-x-auto rounded-lg p-5">
       <h1 className="text-3xl font-bold text-primary mb-6">Jelentkezők</h1>
       <div className="flex justify-between items-center mb-4">
         <div className="flex gap-2">
@@ -314,7 +314,7 @@ const ConferenceDataApplications = () => {
       </div>
       <p className="italic p-2">Találatok: {totalItems}</p>
       {applications.length ? (
-        <table className="w-full bg-base-100 rounded-lg overflow-hidden shadow table-zebra">
+        <table className="min-w-full bg-base-100 rounded-lg overflow-hidden shadow table-zebra">
           <thead className="bg-base-200">
             <tr>
               <th className="p-3 w-1/6">Név</th>
