@@ -33,7 +33,13 @@ const OverviewConferences = () => {
 
   const confirmDeleteConf = () => {
     if (selectedConfId) {
-      dispatch(deleteConf(selectedConfId));
+      dispatch(deleteConf(selectedConfId))
+        .then(() => {
+          dispatch(fetchConferenceFiltered({ page: currentPage, limit: 6 }));
+        })
+        .catch((error) => {
+          console.error("Error deleting conference:", error);
+        });
       setIsModalOpen(false);
     }
   };
